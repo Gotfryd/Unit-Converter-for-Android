@@ -11,7 +11,8 @@
         android:theme="@style/Theme.UnitConverter">
         <activity
             android:name=".HistoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="History"/>
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />

@@ -33,7 +33,8 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
-        android:text="CATEGORY"
+        android:text="@string/length"
+        android:textAllCaps="true"
         android:textAlignment="center"
         android:textSize="25sp"
         android:textColor="@color/mainText"
@@ -67,7 +68,7 @@
             android:inputType="numberDecimal" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
@@ -86,18 +87,17 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/border">
 
-        <EditText
-            android:id="@+id/editTextNumberDecimal3"
+        <TextView
+            android:id="@+id/textViewResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="Result"
+            android:ems="13"
+            android:hint="@string/result"
             android:background="@drawable/border" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/spinnerOutput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
@@ -108,9 +108,10 @@
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:background="@drawable/switch_btn_bg"
-        android:text="CONVERT"
+        android:text="@string/convert"
         android:textColor="@color/mainBackground"
         android:textSize="24sp"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -119,6 +120,7 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

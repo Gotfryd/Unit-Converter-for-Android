@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UnitConverter</string>
+    <string name="nav_open">Ouvrir</string>
+    <string name="nav_close">Fermer</string>
+
+    <string name="convert">CONVERTIR</string>
+    <string name="length">Longueur</string>
+    <string name="mass">Masse</string>
+    <string name="speed">La rapidité</string>
+    <string name="result">Résultat</string>
+    <string name="history">Histoire</string>
+    <string name="options">Choix</string>
+    <string name="appearance">Apparence</string>
+    <string name="darkTheme">Thème sombre</string>
+    <string name="language">Langue</string>
+    <string name="changeLanguage">Changer de langue</string>
+</resources>

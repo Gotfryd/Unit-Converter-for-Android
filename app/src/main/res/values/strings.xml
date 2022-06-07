@@ -7,26 +7,19 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
-    <string-array name="length_units">
-        <item>Kilometer</item>
-        <item>Meter</item>
-        <item>Mile</item>
-        <item>Feet</item>
-    </string-array>
+    <string name="convert">CONVERT</string>
+    <string name="length">Length</string>
+    <string name="mass">Mass</string>
+    <string name="speed">Speed</string>
+    <string name="result">Result</string>
+    <string name="history">History</string>
+    <string name="options">Options</string>
+    <string name="appearance">Appearance</string>
+    <string name="darkTheme">Dark Theme</string>
+    <string name="language">Language</string>
+    <string name="changeLanguage">Change Language</string>
 
-    <string-array name="mass_units">
-        <item>Kilogram</item>
-        <item>Tonne</item>
-        <item>Pound</item>
-    </string-array>
-
-    <string-array name="speed_units">
-        <item>km/h</item>
-        <item>m/s</item>
-        <item>mph</item>
-        <item>fts</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text
+    <string name="hello_blank_fragment">Hello blank fragment</string> -->
 
 </resources>
