@@ -1,12 +1,14 @@
 package pl.pwr.unitconverter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -103,9 +105,39 @@ public class SettingsActivity extends PreferenceActivity {
 public class SettingsActivity extends PreferenceActivity {
     @Override
     public void onCreate(Bundle savedInstanceState){
+        //check dark theme condition
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.darkTheme); //set dark theme
+        }
+        else{
+            setTheme(R.style.AppTheme); //set light theme
+        }
+
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences);
+
+        //dark theme switch preference initialization + code
+        Preference switchPref = (Preference) findPreference("theme_switch");
+        switchPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                boolean isOn = (boolean) newValue;
+
+                if(isOn){
+                    //switch is on
+                    Toast.makeText(SettingsActivity.this, "switch is on", Toast.LENGTH_SHORT).show();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+                else{
+                    Toast.makeText(SettingsActivity.this, "switch is off", Toast.LENGTH_SHORT).show();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+                return true;
+            }
+        });
+
 
         //change language button
         Preference button = findPreference(getString(R.string.changeLanguage));
@@ -132,7 +164,7 @@ public class SettingsActivity extends PreferenceActivity {
                 if(i == 0){
                     //English
                     setAppLocale("en");
-                recreate();
+                    recreate();
 
                 }
                 else if(i == 1){

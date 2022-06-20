@@ -7,6 +7,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/background_color"
     tools:context=".MainActivity">
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="PWr Unit Converter"
         android:textSize="30sp"
-        android:textColor="@color/mainText"
+        android:textStyle="bold"
+        android:textColor="?attr/text_color"
         app:layout_constraintBottom_toTopOf="@+id/categoryName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -37,7 +40,7 @@
         android:textAllCaps="true"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textColor="@color/mainText"
+        android:textColor="?attr/text_color"
         app:layout_constraintBottom_toTopOf="@+id/convert1Layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/border"
+            android:textColor="?attr/text_color"
             android:ems="10"
             android:hint="13,6"
             android:inputType="numberDecimal" />
@@ -94,6 +98,7 @@
             android:layout_weight="1"
             android:ems="13"
             android:hint="@string/result"
+            android:textColor="?attr/text_color"
             android:background="@drawable/border" />
 
         <Spinner
@@ -107,9 +112,9 @@
         android:id="@+id/convertButton"
         android:layout_width="200dp"
         android:layout_height="80dp"
-        android:background="@drawable/switch_btn_bg"
+        android:background="?attr/text_color"
         android:text="@string/convert"
-        android:textColor="@color/mainBackground"
+        android:textColor="?attr/background_color"
         android:textSize="24sp"
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"

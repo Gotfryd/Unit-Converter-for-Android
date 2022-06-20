@@ -1,12 +1,18 @@
 package pl.pwr.unitconverter;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.text.Editable;
@@ -29,6 +35,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -42,15 +49,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView resultTextView;
     private String currentCategory = "length"; //inicjalizuje teraz poniewaz bedzie to domyslna kategoria od razu wyswietlona po wlaczeniu aplikacji
     private TextView categoryTextView;
+    private String actualLang;
 
     Unit unitToConvert;
     Unit unitConverted;
 
+
+    @Override
+    protected void onResume() {
+        System.out.println("resume test");
+        super.onResume();
+        String newLang = getApplicationContext().getResources().getConfiguration().locale.getLanguage();
+        System.out.println("jezyk systemu: " + newLang);
+        System.out.println("aktualny jezyk: " + actualLang);
+        if(!newLang.equals(actualLang)){
+            System.out.println(actualLang);
+
+            recreate();
+            actualLang = newLang;
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        actualLang = getApplicationContext().getResources().getConfiguration().locale.getLanguage();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         //tworzenie obiektow jednostek
@@ -171,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                float numberToConvert = Float.parseFloat(valueToConvertEditText.getText().toString());
                float result = unitConverted.convertFromSiUnit(unitToConvert.convertToSiUnit(numberToConvert));
                resultTextView.setText(String.valueOf(result));
-
             }
         });
 
@@ -211,7 +235,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.darkTheme);
+        }
+        else{
+            setTheme(R.style.AppTheme);
+        }
+
     }
+
 
     //funkcja tworzaca nowa liste z dostepnymi jednostkami podajac z ktorej maja byc kategorii zeby potem wyswietlil je spinner
     public List availableSpinnerUnits( List<Unit> units, String currentCategory){ //(LISTA OBIEKTOW, WYBRANA KATEGORIA Z MENU) //NIE WIEM CZY TYP FUNKCJI JEST DOBRZE //zmienic nazwe funkcji
@@ -249,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 //go to Settings Activity
                 Intent intentSettings = new Intent(this, SettingsActivity.class);
                 startActivity(intentSettings);
+                System.out.println("test intenta");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
